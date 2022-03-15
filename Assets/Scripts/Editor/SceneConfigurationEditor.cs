@@ -1,3 +1,4 @@
+using System.Linq;
 using BeardedPlatypus.MultipleSceneManager.Runtime;
 using UnityEditor;
 using UnityEditorInternal;
@@ -39,7 +40,8 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
                                           true, 
                                           true)
             {
-                drawElementCallback = DrawSceneElement
+                drawElementCallback = DrawSceneElement,
+                drawHeaderCallback = DrawHeader,
             };
         }
 
@@ -52,6 +54,7 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
         public override void OnInspectorGUI()
         {
             DrawCustomSceneList();
+            DrawSceneManagementButtons();
         }
 
         private void DrawCustomSceneList()
@@ -59,6 +62,34 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
             serializedObject.Update();
             _scenes.DoLayoutList();
             serializedObject.ApplyModifiedProperties();
+        }
+
+        private void DrawSceneManagementButtons()
+        {
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("Load Active Scenes"))
+            {
+                LoadActiveScenes();
+            }
+            
+            if (GUILayout.Button("Save Active Scenes"))
+            {
+                SaveActiveScenes();
+            }
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private void LoadActiveScenes()
+        {
+            var configuration = (SceneConfiguration) target;
+            SceneUtils.RemoveUnselectedScenes(configuration.scenes);
+            SceneUtils.ConfigureSelectedScenes(configuration.scenes);
+        }
+
+        private void SaveActiveScenes()
+        {
+            var configuration = (SceneConfiguration) target;
+            configuration.scenes = SceneUtils.ActiveScenes.Select(s => s.name).ToArray();
         }
 
         private void DrawSceneElement(Rect rect, int index, bool isActive, bool isFocused)
@@ -103,6 +134,9 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
                     ? new GUIContent(_warningTex, "Scene not defined in Build Settings.") 
                     : new GUIContent(_checkTex));
         }
+
+        private static void DrawHeader(Rect rect) => 
+            EditorGUI.LabelField(rect, "Scenes:");
 
         private static bool ShouldWarn(string sceneName) =>
             !SceneUtils.IsInBuildSettings(sceneName);
