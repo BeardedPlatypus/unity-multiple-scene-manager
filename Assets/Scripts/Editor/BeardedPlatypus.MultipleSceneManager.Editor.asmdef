@@ -1,0 +1,16 @@
+{
+    "name": "BeardedPlatypus.MultipleSceneManager.Editor",
+    "rootNamespace": "BeardedPlatypus.MultipleSceneManager",
+    "references": [
+        "GUID:66a6f74fb6d3fd94ebf7ad2107018de5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
