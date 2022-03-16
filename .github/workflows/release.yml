@@ -20,6 +20,13 @@ jobs:
         run: |
           npm install @semantic-release/git -D
           npm install @semantic-release/changelog -D
+          npm install @google/semantic-release-replace-plugin -D
+          npm add @qiwi/semantic-release-gh-pages-plugin -D
+          npm install @semantic-release/exec -D
+      - name: Set up Python 3.10 
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

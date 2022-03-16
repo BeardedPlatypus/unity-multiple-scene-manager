@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3188a6fb4baf20f47aa16eb629f9348d, type: 3}
   m_Name: TestConfiguration
   m_EditorClassIdentifier: 
-  scenes: []
+  scenes:
+  - SampleScene
+  - TestScene
