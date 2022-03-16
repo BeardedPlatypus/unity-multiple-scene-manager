@@ -40,8 +40,7 @@
         [
             "@semantic-release/exec", 
             {
-                "verifyConditionsCmd": "./upm-data/upm.sh \"verify\" \".\"",
-                "prepareCmd": "./upm-data/upm.sh  \"prepare\" \".\""
+                "verifyConditionsCmd": "./upm-data/upm.sh \"prepare\" \".\"",
             }
         ],
         [
