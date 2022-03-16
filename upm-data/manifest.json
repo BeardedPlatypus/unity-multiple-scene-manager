@@ -1,0 +1,35 @@
+{
+    "mappings": [
+        {
+            "from": "upm-data/package.json",
+            "to": "package.json"
+        },
+        {
+            "from": "LICENSE.md",
+            "metadata": "upm-data/",
+            "to": "LICENSE.md"
+        },
+        {
+            "from": "CHANGELOG.md",
+            "metadata": "upm-data/",
+            "to": "CHANGELOG.md"
+        },
+        {
+            "from": "README.md",
+            "metadata": "upm-data/",
+            "to": "README.md"
+        },
+        {
+            "from": "upm-data/package.json",
+            "to": "package.json"
+        },
+        {
+            "from": "Assets/Scripts/Runtime",
+            "to": "Runtime"
+        },
+        {
+            "from": "Assets/Scripts/Editor",
+            "to": "Editor"
+        }
+    ]
+}
