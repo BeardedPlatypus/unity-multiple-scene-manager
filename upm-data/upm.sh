@@ -1,2 +1,2 @@
 #!/bin/sh
-python ./upm.py $1 $2
+python ./upm-data/upm.py $1 $2
