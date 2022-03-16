@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using BeardedPlatypus.MultipleSceneManager.Runtime;
 using UnityEditor;
@@ -12,9 +13,6 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
     [CustomEditor(typeof(SceneConfiguration))]
     public class SceneConfigurationEditor : UnityEditor.Editor
     {
-        private const string CheckPath = "Assets/Sprites/check_green.png";
-        private const string WarningPath = "Assets/Sprites/warning_yellow.png";
-
         private static readonly float IconDimension = EditorGUIUtility.singleLineHeight - 4.0F;
         private const float IconPadding = 1.0F;
         private const float VerticalSpacing = 1.0F;
@@ -47,8 +45,23 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
 
         private void InitializeTextures()
         {
-            _checkTex = (Texture2D) AssetDatabase.LoadAssetAtPath(CheckPath, typeof(Texture2D));
-            _warningTex = (Texture2D) AssetDatabase.LoadAssetAtPath(WarningPath, typeof(Texture2D));
+            var checkPath = GetIconPath("check_green.png");
+            _checkTex = (Texture2D) AssetDatabase.LoadAssetAtPath(checkPath, typeof(Texture2D));
+            var warningPath = GetIconPath("warning_yellow.png");
+            _warningTex = (Texture2D) AssetDatabase.LoadAssetAtPath(warningPath, typeof(Texture2D));
+        }
+
+        private static string GetIconPath(string iconName)
+        {
+            string relativePath = $"Editor/Sprites/{iconName}";
+            
+            string packagePath = $"Packages/com.beardedplatypus.multiple-scene-manager/{relativePath}";
+            if (File.Exists(packagePath)) return packagePath;
+
+            string projectPath = $"Assets/Scripts/{relativePath}";
+            if (File.Exists(projectPath)) return projectPath;
+
+            return null;
         }
 
         public override void OnInspectorGUI()
