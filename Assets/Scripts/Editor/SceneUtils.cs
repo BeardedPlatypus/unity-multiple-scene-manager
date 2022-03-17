@@ -120,6 +120,13 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
         public static bool IsInBuildSettings(string sceneName) =>
             BuildScenePaths.Select(SceneUtils.PathToName).Any(n => n == sceneName);
 
+        /// <summary>
+        /// Check whether the specified <paramref name="sceneName"/> is in the project.
+        /// </summary>
+        /// <param name="sceneName">The name of the scene to check.</param>
+        /// <returns>
+        /// <c>true</c> if the scene exists in the project; <c>false</c> otherwise.
+        /// </returns>
         public static bool IsInProject(string sceneName) =>
             Directory.EnumerateFiles(Directory.GetCurrentDirectory(),
                                      $"{sceneName}.unity",
