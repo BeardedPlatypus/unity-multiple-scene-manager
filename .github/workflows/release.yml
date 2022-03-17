@@ -37,6 +37,7 @@ jobs:
           path: upm-package
       - name: Publish UPM
         run: |
+            chmod u+x ./.ci/jq
             version=$(./.ci/jq '.version' upm-data/package.json)
             version=${version//\"/}
 
