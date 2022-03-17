@@ -37,6 +37,9 @@ jobs:
           path: upm-package
       - name: Publish UPM
         run: |
+            git config user.name "BeardedPlatypus"
+            git config user.email "mwtegelaers@gmail.com"
+
             chmod u+x ./.ci/jq
             version=$(./.ci/jq '.version' upm-data/package.json)
             version=${version//\"/}
