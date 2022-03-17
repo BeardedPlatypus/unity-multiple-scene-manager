@@ -30,6 +30,9 @@ jobs:
       - name: Enable bash scripts
         run: |
           chmod u+x ./upm-data/upm.sh
+      - name: Create empty upm-package directory
+        run: |
+          mkdir "upm-package"
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
