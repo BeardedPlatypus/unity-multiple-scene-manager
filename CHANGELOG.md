@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.1.3...v1.1.4) (2022-03-17)
+
+
+### Bug Fixes
+
+* **upm:** add git config settings ([1678077](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/commit/167807719f58261bbd7d1495a13a6dd34cdc36ea))
+
 ## [1.1.3](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.1.2...v1.1.3) (2022-03-17)
 
 
