@@ -1,3 +1,17 @@
+## [1.1.3](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.1.2...v1.1.3) (2022-03-17)
+
+
+### Bug Fixes
+
+* **upm:** add git config settings ([e5c8a33](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/commit/e5c8a332714fc2721e7e06b7ee4d3a4fd0386b8c))
+
+## [1.1.2](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.1.1...v1.1.2) (2022-03-17)
+
+
+### Bug Fixes
+
+* **upm:** add chmod for jq binaries ([7bddc82](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/commit/7bddc8232dc21ca6cd5535215104a01f327648e3)), closes [#14](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/issues/14)
+
 ## [1.1.1](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.1.0...v1.1.1) (2022-03-17)
 
 
