@@ -1,6 +1,6 @@
 {
   "name": "com.beardedplatypus.multiple-scene-manager",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "displayName": "Multiple Scene Manager",
   "description": "'Multiple Scene Manager' provides some utility tooling to handle multiple scenes within the Unity editor.",
   "unity": "2020.3",
