@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.1.0...v1.1.1) (2022-03-17)
+
+
+### Bug Fixes
+
+* **upm:** fix the upm branch delivery ([9cd3af4](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/commit/9cd3af4cfecfa365a8349824a9614b09eefafd93)), closes [#13](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/issues/13)
+
 # [1.1.0](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.0.0...v1.1.0) (2022-03-17)
 
 
