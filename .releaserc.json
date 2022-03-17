@@ -17,15 +17,6 @@
                         "files": ["upm-data/package.json"],
                         "from": "  version: \".*\",",
                         "to": "  version: \"${nextRelease.version}\",",
-                        "results": [
-                            {
-                                "file": "upm-data/package.json",
-                                "hasChanged": true,
-                                "numMatches": 1,
-                                "numReplacements": 1
-                            }
-                        ],
-                        "countMatches": true
                     }
                 ]
             }
