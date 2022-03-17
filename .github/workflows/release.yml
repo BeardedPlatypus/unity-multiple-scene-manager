@@ -21,19 +21,28 @@ jobs:
           npm install @semantic-release/git -D
           npm install @semantic-release/changelog -D
           npm install @google/semantic-release-replace-plugin -D
-          npm add @qiwi/semantic-release-gh-pages-plugin -D
-          npm install @semantic-release/exec -D
       - name: Set up Python 3.10 
         uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-      - name: Enable bash scripts
-        run: |
-          chmod u+x ./upm-data/upm.sh
-      - name: Create empty upm-package directory
-        run: |
-          mkdir "upm-package"
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+      - name: Checkout UPM branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: upm/release
+          path: upm-package
+      - name: Publish UPM
+        run: |
+            version=$(./.ci/jq '.version' upm-data/package.json)
+            version=${version//\"/}
+
+            (cd upm-package && git rm -r *)
+            python ./upm-data/upm.py "prepare" "."
+            (cd upm-package && git add .)
+            (cd upm-package && git commit -m "chore(upm): publish upm/release v$version")
+            (cd upm-package && git push origin upm/release)
+        shell: bash

@@ -15,8 +15,17 @@
                 "replacements": [
                     {
                         "files": ["upm-data/package.json"],
-                        "from": "  version: \".*\",",
-                        "to": "  version: \"${nextRelease.version}\","
+                        "from": "\"version\": \".*\",",
+                        "to": "\"version\": \"${nextRelease.version}\",",
+                        "results": [
+                            {
+                                "file": "upm-data/package.json",
+                                "hasChanged": true,
+                                "numMatches": 1,
+                                "numReplacements": 1
+                            }
+                        ],
+                        "countMatches": true
                     }
                 ]
             }
@@ -27,22 +36,6 @@
                 "assets": ["CHANGELOG.md", "upm-data/package.json"]
             }
         ],
-        "@semantic-release/github",
-        [
-            "@semantic-release/exec", 
-            {
-                "verifyConditionsCmd": "./upm-data/upm.sh \"verify\" \".\"",
-                "prepareCmd": "./upm-data/upm.sh  \"prepare\" \".\""
-            }
-        ],
-        [
-            "@qiwi/semantic-release-gh-pages-plugin",
-            {
-                "msg": "Update UPM branch to <%= nextRelease.gitTag %>",
-                "src": "upm-package",
-                "dst": ".",
-                "branch": "upm/release"
-            }
-        ]
+        "@semantic-release/github"
     ]
 }
