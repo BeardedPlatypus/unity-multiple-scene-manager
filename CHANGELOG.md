@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.0.0...v1.1.0) (2022-03-17)
+
+
+### Bug Fixes
+
+* **docs:** extend documentation scene configuration ([#9](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/issues/9)) ([ac3d656](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/commit/ac3d656cb9a170a61fca9ccb865597940ae978eb))
+
+
+### Features
+
+* **upm:** add automatic upm/release branch updates ([816362e](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/commit/816362e39e8dc1c87939e8b88b67c06104b7e81a)), closes [#3](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/issues/3)
+
 # 1.0.0 (2022-03-15)
 
 
