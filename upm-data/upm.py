@@ -76,26 +76,12 @@ def verify(repository_directory: Path) -> None:
             raise Exception(f"src, {mapping.src}, is not a file or directory.")
 
 
-def _create_destination_directory(dst: Path) -> None:
-    if dst.is_file():
-        dst.unlink()
-    elif dst.is_dir():
-        shutil.rmtree(str(dst))
-
-    dst.mkdir(parents=True)
-
-
-def _copy_mappings_to_destination(mappings: List[Mapping], dst: Path) -> None:
-    for mapping in mappings:
-        mapping.copy_to(dst)
-
-
 def prepare(repository_directory: Path) -> None:
     dst = repository_directory / "upm-package"
-    _create_destination_directory(dst)
-
     mappings = _load_manifest(repository_directory)
-    _copy_mappings_to_destination(mappings, dst)
+
+    for mapping in mappings:
+        mapping.copy_to(dst)
 
 
 def _parse_arguments():
