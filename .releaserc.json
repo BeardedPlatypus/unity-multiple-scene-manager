@@ -16,7 +16,7 @@
                     {
                         "files": ["upm-data/package.json"],
                         "from": "  version: \".*\",",
-                        "to": "  version: \"${nextRelease.version}\",",
+                        "to": "  version: \"${nextRelease.version}\","
                     }
                 ]
             }
