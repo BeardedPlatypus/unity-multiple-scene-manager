@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.1.5...v1.1.6) (2022-03-30)
+
+
+### Bug Fixes
+
+* **editor:** adjust persistence issues ([686a011](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/commit/686a011f780a4bd2d7ace901e8d3f43229bb4649))
+
 ## [1.1.5](https://github.com/BeardedPlatypus/unity-multiple-scene-manager/compare/v1.1.4...v1.1.5) (2022-03-17)
 
 
