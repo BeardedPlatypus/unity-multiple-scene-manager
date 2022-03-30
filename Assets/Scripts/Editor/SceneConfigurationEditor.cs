@@ -101,8 +101,17 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
 
         private void SaveActiveScenes()
         {
-            var configuration = (SceneConfiguration) target;
-            configuration.scenes = SceneUtils.ActiveScenes.Select(s => s.name).ToArray();
+            serializedObject.Update();
+            SerializedProperty sceneProp = serializedObject.FindProperty("scenes");
+            sceneProp.ClearArray();
+
+            foreach (var scene in SceneUtils.ActiveScenes.Reverse())
+            {
+                sceneProp.InsertArrayElementAtIndex(0);
+                sceneProp.GetArrayElementAtIndex(0).stringValue = scene.name;
+            }
+            
+            serializedObject.ApplyModifiedProperties();
         }
 
         private void DrawSceneElement(Rect rect, int index, bool isActive, bool isFocused)
