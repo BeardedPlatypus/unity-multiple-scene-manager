@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEditor.SceneManagement;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace BeardedPlatypus.MultipleSceneManager.Editor
@@ -46,22 +48,34 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
         /// <param name="selectedScenes">The selected scenes which the active scenes should match</param>
         public static void ConfigureSelectedScenes(IEnumerable<string> selectedScenes)
         {
-            foreach ((string scene, int i) in selectedScenes.Select((s, i) => (s, i)))
+            int i = 0;
+            foreach (string scene in selectedScenes)
             {
                 if (IsOpenSceneAtIndex(scene, i))
                 {
+                    i += 1;
                     continue;
                 }
                 
                 if (!HasSceneLoaded(scene))
                 {
                     string scenePath = GetScenePathByName(scene);
+
+                    if (scenePath is null)
+                    {
+                        const string msg = "Cannot find {0} in the BuildSettings. Skipping it.\n" +
+                                           "Please specify this scene in the BuildSettings to load it correctly.";
+                        Debug.LogWarningFormat(msg, scene);
+                        continue;
+                    }
+                    
                     EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
                 }
                 
                 EditorSceneManager.MoveSceneAfter(
                     SceneManager.GetSceneByName(scene),
                     SceneManager.GetSceneAt(i - 1));
+                i += 1;
             }
         }
 
@@ -105,10 +119,11 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
         /// The path to the scene corresponding with <paramref name="name"/>.
         /// </returns>
         /// <remarks>
-        /// The scene corresponding with <paramref name="name"/> should be defined in the Build Settings.
+        /// The scene corresponding with <paramref name="name"/> should be defined in the Build Settings,
+        /// otherwise null will be returned.
         /// </remarks>
-        public static string GetScenePathByName(string name) =>
-            BuildScenePaths.First(n => PathToName(n) == name);
+        [CanBeNull] public static string GetScenePathByName(string name) =>
+            BuildScenePaths.FirstOrDefault(n => PathToName(n) == name);
         
         /// <summary>
         /// Check whether the provided <paramref name="sceneName"/> exists in the Build Settings.
