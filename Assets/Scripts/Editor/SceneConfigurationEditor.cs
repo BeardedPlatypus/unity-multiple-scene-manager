@@ -80,14 +80,14 @@ namespace BeardedPlatypus.MultipleSceneManager.Editor
         private void DrawSceneManagementButtons()
         {
             EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("Load Active Scenes"))
-            {
-                LoadActiveScenes();
-            }
-            
             if (GUILayout.Button("Save Active Scenes"))
             {
                 SaveActiveScenes();
+            }
+            
+            if (GUILayout.Button("Load Stored Scenes"))
+            {
+                LoadActiveScenes();
             }
             EditorGUILayout.EndHorizontal();
         }
